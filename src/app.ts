@@ -1,6 +1,7 @@
 import express, { Application, Request, Response, NextFunction } from "express";
 import cors from "cors";
 import bodyPaser from "body-parser";
+import { bikeRoutes } from "./app/modules/bike/bike.routes";
 
 const app: Application = express();
 
@@ -12,7 +13,7 @@ app.use(bodyPaser.json());
 
 // application routes
 // app.use("/api/v1/students", StudentRoutes);
-app.use("/api/v1");
+app.use("/api/v1", bikeRoutes);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello Devs!");
