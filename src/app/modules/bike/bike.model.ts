@@ -1,7 +1,7 @@
-import mongoose, { Document, Schema } from "mongoose";
+import { Schema, model } from "mongoose";
 import { IBike } from "./bike.interface";
 
-const BikeSchema: Schema = new Schema(
+const BikeSchema = new Schema<IBike>(
   {
     name: { type: String, required: true },
     description: { type: String, required: true },
@@ -15,4 +15,4 @@ const BikeSchema: Schema = new Schema(
   { timestamps: true }
 );
 
-export default mongoose.model<IBike>("Bike", BikeSchema);
+export const Bike = model<IBike>("Bike", BikeSchema);
