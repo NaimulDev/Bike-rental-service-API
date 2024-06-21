@@ -36,17 +36,17 @@ import { UserMiddleware } from "../../middlewares/authMiddleware";
 
 const router = express.Router();
 
-router.post(
-  "/signup",
-  validateRequest(UserValidations.signUpSchema),
-  UserController.signUp
-);
+// router.post(
+//   "/signup",
+//   validateRequest(UserValidations.signUpSchema),
+//   UserController.signUp
+// );
 
-router.post(
-  "/login",
-  validateRequest(UserValidations.loginSchema),
-  UserController.login
-);
+// router.post(
+//   "/login",
+//   validateRequest(UserValidations.loginSchema),
+//   UserController.login
+// );
 
 router.get("/me", UserMiddleware.authMiddleware, UserController.getProfile);
 

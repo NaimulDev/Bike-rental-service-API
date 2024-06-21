@@ -11,11 +11,9 @@ const authMiddleware = catchAsync(async (req, res, next) => {
   }
 
   const token = authHeader.split(" ")[1]; // Split by space and get the second part
-  console.log("Token:", token); // Debugging line
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
-    console.log("Decoded Token:", decoded); // Debugging line
 
     const user = await User.findById((decoded as any).id);
     if (!user) {
