@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-const bikeSchema = z.object({
+const createBikeSchema = z.object({
   name: z.string(),
   description: z.string(),
   pricePerHour: z.number(),
@@ -11,4 +11,20 @@ const bikeSchema = z.object({
   brand: z.string(),
 });
 
-export const validateBike = (data: any) => bikeSchema.safeParse(data);
+const updateBikeSchema = z.object({
+  name: z.string().optional(),
+  description: z.string().optional(),
+  pricePerHour: z.number().positive().optional(),
+  isAvailable: z.boolean().optional(),
+  cc: z.number().positive().optional(),
+  year: z.number().int().optional(),
+  model: z.string().optional(),
+  brand: z.string().optional(),
+});
+
+// export const validateBike = (data: any) => bikeSchema.safeParse(data);
+
+export const BikeValidations = {
+  createBikeSchema,
+  updateBikeSchema,
+};

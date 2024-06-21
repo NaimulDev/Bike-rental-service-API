@@ -11,11 +11,6 @@ const getAllBikesFromDB = async () => {
   return result;
 };
 
-const getSingleBikeFromDB = async (id: string) => {
-  const result = await Bike.findById(id);
-  return result;
-};
-
 const updateBikeIntoDB = async (id: string, payload: Partial<IBike>) => {
   const result = await Bike.findOneAndUpdate({ _id: id }, payload, {
     new: true,
@@ -23,9 +18,14 @@ const updateBikeIntoDB = async (id: string, payload: Partial<IBike>) => {
   return result;
 };
 
+const deleteBikeIntoDB = async (id: string) => {
+  const bike = await Bike.findByIdAndDelete(id);
+  if (!bike) throw new Error("Bike not found");
+  return bike;
+};
 export const BikeServices = {
   createBikeIntoDB,
   getAllBikesFromDB,
-  getSingleBikeFromDB,
   updateBikeIntoDB,
+  deleteBikeIntoDB,
 };
