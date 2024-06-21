@@ -1,10 +1,10 @@
-import { Document } from "mongoose";
+import { Document, Types } from "mongoose";
 
 export interface IBooking extends Document {
-  userId: string;
-  bikeId: string;
+  userId: Types.ObjectId;
+  bikeId: Types.ObjectId;
   startTime: Date;
-  returnTime: Date | null;
+  returnTime?: Date | null;
   totalCost: number;
   isReturned: boolean;
 }

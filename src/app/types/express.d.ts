@@ -1,4 +1,5 @@
 import { IUser } from "../modules/user/user.interface";
+import { Types } from "mongoose";
 
 declare global {
   namespace Express {
@@ -6,4 +7,7 @@ declare global {
       user?: IUser;
     }
   }
+}
+declare module "mongoose" {
+  export interface ObjectId extends Types.ObjectId {}
 }

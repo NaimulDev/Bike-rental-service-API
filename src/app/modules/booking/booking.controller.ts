@@ -5,7 +5,7 @@ import sendResponse from "../../utils/sendResponse";
 
 const createBooking = catchAsync(async (req: Request, res: Response) => {
   const result = await BookingService.createBooking(
-    req.user.id,
+    req.user!.id,
     req.body.bikeId,
     new Date(req.body.startTime)
   );
@@ -28,7 +28,7 @@ const returnBike = catchAsync(async (req: Request, res: Response) => {
 });
 
 const getUserBookings = catchAsync(async (req: Request, res: Response) => {
-  const result = await BookingService.getUserBookings(req.user.id);
+  const result = await BookingService.getUserBookings(req.user!.id);
   sendResponse(res, {
     statusCode: 200,
     success: true,
