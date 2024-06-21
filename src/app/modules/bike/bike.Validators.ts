@@ -22,8 +22,6 @@ const updateBikeSchema = z.object({
   brand: z.string().optional(),
 });
 
-// export const validateBike = (data: any) => bikeSchema.safeParse(data);
-
 export const BikeValidations = {
   createBikeSchema,
   updateBikeSchema,

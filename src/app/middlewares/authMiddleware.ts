@@ -10,7 +10,7 @@ const authMiddleware = catchAsync(async (req, res, next) => {
     return next(new AppError("You have no access to this route", 401));
   }
 
-  const token = authHeader.split(" ")[1]; // Split by space and get the second part
+  const token = authHeader.split(" ")[1];
 
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string);
@@ -23,7 +23,7 @@ const authMiddleware = catchAsync(async (req, res, next) => {
     req.user = user;
     next();
   } catch (err) {
-    console.error("Token verification error:", err); // Debugging line
+    console.error("Token verification error:", err);
     return next(new AppError("Invalid token", 401));
   }
 });
