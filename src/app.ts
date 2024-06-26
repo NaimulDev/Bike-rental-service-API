@@ -8,12 +8,15 @@ import bodyParser from "body-parser";
 
 const app: Application = express();
 
+const EventEmitter = require("events");
+EventEmitter.defaultMaxListeners = 20;
+
 // parsers
 app.use(express.json());
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use("/api/v1", router);
+app.use("/api", router);
 
 app.get("/", (req: Request, res: Response) => {
   res.send("Hello Devs!");
